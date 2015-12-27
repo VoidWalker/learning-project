@@ -2,5 +2,6 @@
 $I = 'test';
 function test()
 {
-    return true;
+    $new = 12;
+    return $new;
 }
