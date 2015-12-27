@@ -2,6 +2,6 @@
 $I = 'test';
 function test()
 {
-    $new = 12;
-    return $new;
+    $new_new_new = 12;
+    return $new_new_new;
 }
