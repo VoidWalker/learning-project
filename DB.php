@@ -6,7 +6,7 @@ class DB
 
     public function __construct()
     {
-        $dbName = "learning_db";
+        $dbName = "learning_1_db";
         $dsn = "mysql:host=localhost";
         $username = 'root';
         $password = '';
