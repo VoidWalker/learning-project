@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Дек 22 2015 г., 21:27
+-- Время создания: Янв 13 2016 г., 19:09
 -- Версия сервера: 5.6.20
 -- Версия PHP: 5.5.15
 
@@ -35,6 +35,13 @@ CREATE TABLE IF NOT EXISTS `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
+-- Дамп данных таблицы `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `description`, `price`, `image`) VALUES
+(1, 'name', 'description', 55.55, 'image/link.jpg');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -52,7 +59,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-MODIFY `id` int(16) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(16) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
