@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Test Ajax</title>
+</head>
+<body>
+<div id="title"><h1>Test Ajax</h1></div>
+<button onclick="ajaxTest()">Send ajax request</button>
+<script>
+    function ajaxTest() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState != 4) {
+                return;
+            }
+            clearTimeout(timeout);
+            if (xhttp.status == 200) {
+                document.getElementById("title").innerHTML = xhttp.responseText;
+            } else {
+                handleError(xhttp.statusText);
+            }
+        };
+        xhttp.open("GET", "ajax_info.html", true);
+        xhttp.send();
+        var timeout = setTimeout(function () {
+            xmlhttp.abort();
+            handleError("Time over")
+        }, 10000);
+
+        function handleError(message) {
+            alert("Ошибка: " + message)
+        }
+
+        var = test
+    }
+</script>
+</body>
+</html>
