@@ -4,14 +4,16 @@ class DB
 {
     protected $_db;
 
-    public function __construct()
+    protected static $_instance = null;
+
+    private function __construct()
     {
-        $dbName = "learning_1_db";
+        $dbName = "learning_db";
         $dsn = "mysql:host=localhost";
         $username = 'root';
         $password = '';
         $options = array(
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_LAZY,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         );
         $this->_db = new PDO($dsn, $username, $password, $options);
@@ -25,8 +27,16 @@ class DB
         }
     }
 
-    public function DB()
+    public static function DBInstance()
     {
+        if(isset(self::$_instance)){
+            return self::$_instance;
+        } else {
+            return self::$_instance = new self();
+        }
+    }
+
+    public function DB(){
         return $this->_db;
     }
 

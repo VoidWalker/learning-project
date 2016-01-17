@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>Test Ajax</title>
+</head>
+<body>
+<div id="title"><h1>Chat</h1></div>
+Author<input type="text" name="author"/><br/>
+Message<input type="text" name="message"/>
+<button onclick="ajaxSaveMessage()">Send message</button>
+<hr>
+<div id="chatHistory"></div>
+<script>
+    function ajaxRefreshChat() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState != 4) {
+                return;
+            }
+            clearTimeout(timeout);
+            if (xhttp.status == 200) {
+                document.querySelector("#chatHistory").innerHTML = xhttp.responseText;
+                document.querySelector("#title").innerHTML += '.';
+            } else {
+                handleError(xhttp.statusText);
+            }
+        };
+        xhttp.open("GET", "/ajax_chat/chat_server.php", true);
+        xhttp.send();
+        var timeout = setTimeout(function () {
+            xmlhttp.abort();
+            handleError("Time over")
+        }, 10000);
+
+        function handleError(message) {
+            alert("Refresh error: " + message)
+        }
+    }
+    var timer = setInterval(ajaxRefreshChat, 3000);
+
+    function ajaxSaveMessage() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState != 4) {
+                return;
+            }
+            if (xhttp.status == 200) {
+                console.log(xhttp.responseText);
+            } else {
+                handleError(xhttp.statusText);
+            }
+        };
+
+        var author = document.querySelector("input[name='author']").value;
+        var message = document.querySelector("input[name='message']").value;
+        var params = 'author=' + encodeURIComponent(author) + '&message=' + encodeURIComponent(message);
+        xhttp.open("POST", '/ajax_chat/save_message.php', true);
+        xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhttp.send(params);
+    }
+</script>
+</body>
+</html>
