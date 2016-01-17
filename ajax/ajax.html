@@ -3,10 +3,14 @@
     <title>Test Ajax</title>
 </head>
 <body>
-<div id="title"><h1>Test Ajax</h1></div>
-<button onclick="ajaxTest()">Send ajax request</button>
+<div id="title"><h1>output:</h1></div>
+<input type="text" id="input" onkeyup="ajaxTest(event)">
+<!--<button onclick="ajaxTest()">Send ajax request</button>-->
 <script>
-    function ajaxTest() {
+    function ajaxTest(event) {
+        if (event.shiftKey) {
+            return;
+        }
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (xhttp.readyState != 4) {
@@ -14,12 +18,15 @@
             }
             clearTimeout(timeout);
             if (xhttp.status == 200) {
-                document.getElementById("title").innerHTML = xhttp.responseText;
+                document.querySelector("#title h1").innerHTML += xhttp.responseText;
             } else {
                 handleError(xhttp.statusText);
             }
         };
-        xhttp.open("GET", "ajax_info.html", true);
+        var inputStringLenght = document.querySelector("#input").value.length;
+        var inputString = document.querySelector("#input").value.slice(inputStringLenght - 1);
+        var params = (inputString !== "") ? "?value=" + inputString : "";
+        xhttp.open("GET", "/ajax/ajaxResponse.php" + params, true);
         xhttp.send();
         var timeout = setTimeout(function () {
             xmlhttp.abort();
@@ -29,8 +36,6 @@
         function handleError(message) {
             alert("Ошибка: " + message)
         }
-
-        var = test
     }
 </script>
 </body>
