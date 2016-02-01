@@ -29,14 +29,15 @@ class DB
 
     public static function DBInstance()
     {
-        if(isset(self::$_instance)){
+        if (isset(self::$_instance)) {
             return self::$_instance;
         } else {
             return self::$_instance = new self();
         }
     }
 
-    public function DB(){
+    public function DB()
+    {
         return $this->_db;
     }
 
