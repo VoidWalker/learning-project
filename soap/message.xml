@@ -1,0 +1,15 @@
+<?xml version='1.0' standalone='yes'?>
+<messageList>
+    <message>
+        <phone>71239876543</phone>
+        <text>test 1</text>
+        <date>2013-07-20T12:00:00</date>
+        <type>12</type>
+    </message>
+    <message>
+        <phone>71239876543</phone>
+        <text>test N</text>
+        <date>2013-07-20T12:00:00</date>
+        <type>12</type>
+    </message>
+</messageList>
