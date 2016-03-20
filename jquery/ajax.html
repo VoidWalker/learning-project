@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Test Ajax</title>
+    <script src="jquery-1.12.1.js"></script>
+</head>
+<body>
+<div id="title"><h1>output:</h1></div>
+<!--<input type="text" id="input" onkeyup="ajaxTest(event)">-->
+<button onclick="ajaxTest()">Send ajax request</button>
+<script>
+    function ajaxTest(event) {
+
+        $.ajax({
+            url: "/test.php",
+            success: function (result) {
+                $("#title").html(result);
+            }
+        });
+
+        $("#title").load("/test.php", function (response, status, xhr) {
+            if (status == "error") {
+                var msg = "Sorry but there was an error: ";
+                $("#error").html(msg + xhr.status + " " + xhr.statusText);
+            }
+        });
+    }
+</script>
+</body>
+</html>
