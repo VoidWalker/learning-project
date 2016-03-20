@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prototype Test</title>
+    <script src="prototype.js"></script>
+    <script>
+        function Test() {
+            var array = $$("#heading form input");
+            var a = 2 + 2;
+            return array;
+        }
+        function ArrayObject() {
+            var someNodeList = $('list').getElementsByTagName('option');
+            var nodes = $A(someNodeList);
+
+            nodes.each(function (node) {
+                alert(node.nodeName + ': ' + node.innerHTML);
+            });
+        }
+
+        function ajax() {
+            var url = '/test.php';
+            var pars = 'id=123&value=456';
+
+            var myAjax = new Ajax.Request(
+                    url,
+                    {
+                        method: 'get',
+                        parameters: pars,
+                        onComplete: showResponse
+                    });
+
+            function showResponse(originalRequest) {
+                var element = document.querySelector("h1");
+                element.innerHTML = originalRequest.responseText;
+            }
+        }
+    </script>
+</head>
+<body>
+<h1 id="heading">jQuery Test</h1>
+
+<p>Test line to disappear</p>
+
+<form action="" method="get">
+    <input type="text" name="test"/>
+    <select id="list">
+        <option value="3">Test 1</option>
+        <option value="2">Test 2</option>
+        <option value="4">Test 3</option>
+    </select>
+</form>
+<button onclick="ajax()">Click me!</button>
+</body>
+</html>
