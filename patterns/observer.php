@@ -18,27 +18,7 @@ class TestObject
     public function doo()
     {
         echo "TestObject: I do doo!<br />";
-        $this->inform();
-    }
-
-    private function inform()
-    {
-        foreach ($this->observers as $observer) {
-            $observer->invoke($this);
-        }
-    }
-
-    public function bind($observer){
-        $this->observers[] = $observer;
-    }
-
-    public function detach($observer){
-        foreach ($this->observers as $key => $observerIn) {
-            if ( $observerIn === $observer) {
-                unset($this->observers[$key]);
-            }
-        }
-
+        Mage::dispatchEvent('event_name');
     }
 }
 

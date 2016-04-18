@@ -1,5 +1,5 @@
 <?php
-class myIterator implements IteratorAggregate {
+class myIterator implements Iterator {
     private $array = array(
         "firstelement",
         "secondelement",
