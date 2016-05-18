@@ -16,8 +16,15 @@
                 $("#title").html(result);
             }
         });
-
+        //////////////////////////////
         $("#title").load("/test.php", function (response, status, xhr) {
+            if (status == "error") {
+                var msg = "Sorry but there was an error: ";
+                $("#error").html(msg + xhr.status + " " + xhr.statusText);
+            }
+        });
+        /////////////////////////
+        $("#title").get("/test.php", function (response, status, xhr) {
             if (status == "error") {
                 var msg = "Sorry but there was an error: ";
                 $("#error").html(msg + xhr.status + " " + xhr.statusText);

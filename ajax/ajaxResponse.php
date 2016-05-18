@@ -3,7 +3,7 @@ $requestTransformed = "";
 if (!empty($_GET['value'])) {
     $request = $_GET['value'];
     $lastChar = substr($request, -1);
-    $lastCharTransformed = isUpperCase($lastChar)?strtolower($lastChar):strtoupper($lastChar);
+    $lastCharTransformed = isUpperCase($lastChar) ? strtolower($lastChar) : strtoupper($lastChar);
     $requestTransformed = $lastCharTransformed;
 
 } else {
@@ -17,3 +17,5 @@ function isUpperCase($char)
 }
 
 echo $requestTransformed;
+
+//$s = ($s == strtolower($s)) ? strtoupper($s) : strtolower($s);

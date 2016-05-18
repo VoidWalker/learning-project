@@ -8,7 +8,7 @@ class OldGuy
     }
 }
 
-class OldyGuyAdapter extends OldGuy
+class OldyGuyAdapter //Надо бить в єбло
 {
     public function convertToFloat($int)
     {

@@ -8,8 +8,10 @@
 <!--<button onclick="ajaxTest()">Send ajax request</button>-->
 <script>
     function ajaxTest(event) {
-        if (event.shiftKey) {
-            return;
+        var inputString = String.fromCharCode(event.which);
+        if( /[^a-zA-Z0-9]/.test( inputString ) ) {
+            alert('Input is not alphanumeric');
+            return false;
         }
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -34,7 +36,7 @@
         }, 10000);
 
         function handleError(message) {
-            alert("Ошибка: " + message)
+            alert("Timeout error: " + message)
         }
     }
 </script>

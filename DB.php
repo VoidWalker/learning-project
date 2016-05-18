@@ -32,8 +32,8 @@ class DB
         if (isset(self::$_instance)) {
             return self::$_instance;
         } else {
-            return self::$_instance = new self();
         }
+        return self::$_instance = new self();
     }
 
     public function DB()
@@ -65,7 +65,7 @@ class DB
                 }
             }
 
-            if (preg_match("/\*\/;$/", $lines[$i])) {
+            if (preg_match("/\*\/;/", $lines[$i])) {
                 $in_comment = false;
             }
         }
