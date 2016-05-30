@@ -22,5 +22,4 @@ $result = $mysqli->query("SELECT * FROM message");
 echo "<pre>";
 print_r($result->fetch_all());
 echo "</pre>";
-
 $mysqli->close();
