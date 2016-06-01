@@ -14,6 +14,7 @@
 //echo $row['_msg'];
 //mysqli_close($db_link);
 
+
 $mysqli = new mysqli('localhost', 'root', '', 'learning_db');
 
 if ($mysqli->connect_error) {
