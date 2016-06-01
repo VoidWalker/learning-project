@@ -9,6 +9,9 @@
 //
 //echo "Connection established... " . mysqli_get_host_info($db_link) . "\n";
 //
+//res = mysqli_query($db_link, "SELECT 'Пожалуйста, не используюте ' AS _msg FROM DUAL");
+//$row = mysqli_fetch_assoc($res);
+//echo $row['_msg'];
 //mysqli_close($db_link);
 
 $mysqli = new mysqli('localhost', 'root', '', 'learning_db');
