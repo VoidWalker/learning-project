@@ -33,10 +33,10 @@ class FileReader
                 break;
         }
 
-        return $reader;
+        return $reader->read($filePath);
     }
 }
 
 $reader = new FileReader();
 $reader->read("test.ini");
-        $reader = new INIFileReader();
+$reader = new INIFileReader();
