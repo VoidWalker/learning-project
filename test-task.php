@@ -61,7 +61,12 @@ function sortArray($countryArray)
     while ($sortingFlag) {
         $sortingFlag = false;
         for ($i = 0; $i < $length - 1; $i++) {
-            if ($array[$i]['position'] > $array[$i + 1]['position']) {
+            if ($array[$i]['name'] == 'USA') {
+                $currentElement = $array[$i];
+                $array[$i] = $array[$i + 1];
+                $array[$i + 1] = $currentElement;
+                $sortingFlag = true;
+            } elseif ($array[$i]['position'] > $array[$i + 1]['position']) {
                 $currentElement = $array[$i];
                 $array[$i] = $array[$i + 1];
                 $array[$i + 1] = $currentElement;
