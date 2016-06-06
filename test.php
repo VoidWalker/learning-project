@@ -18,8 +18,8 @@ $countriesSorted = [];
 function setCriteriaFlags(&$array)
 {
     foreach ($array as &$country) {
-        ($country['name'] === 'USA') ? $country['is_usa'] = 1 : $country['is_usa'] = 0;
-        ($country['lang'] === 'en') ? $country['is_en'] = 1 : $country['is_en'] = 0;
+        ($country['name'] === 'USA') ? $country['is_usa'] = 1 : $country['is_usa'] = -1;
+        ($country['lang'] === 'en') ? $country['is_en'] = -1 : $country['is_en'] = 1;
 
     }
 }
@@ -31,18 +31,24 @@ function sortByCriteria(&$countries, $criteria)
             if ($a[$criteria[$i - 1]] == $b[$criteria[$i - 1]]) {
                 if (is_string($a[$criteria[$i]])) {
                     return strcasecmp($a[$criteria[$i]], $b[$criteria[$i]]) ? -1 : 1;
+                } else {
+                    return ($a[$criteria[$i]] > $b[$criteria[$i]]) ? 1 : -1;
                 }
-                return ($a[$criteria[$i]] > $b[$criteria[$i]]) ? 1 : -1;
             }
         }
         if (is_string($a[$criteria[0]])) {
-            return strcasecmp($a[$criteria[0]], $b[$criteria[0]]) ? -1 : 1;
+            (strcasecmp($a[$criteria[0]], $b[$criteria[0]]) > 0) ? $test = 1 : $test = -1;
+            return $test;
+        } else {
+            return ($a[$criteria[0]] > $b[$criteria[0]]) ? 1 : -1;
         }
-        return ($a[$criteria[0]] > $b[$criteria[0]]) ? 1 : -1;
     });
 }
 
 setCriteriaFlags($countries);
 $criteria = ['is_usa', 'is_en', 'position', 'name'];
-sortByCriteria($countries, ['name']);
+sortByCriteria($countries, ['is_usa', 'is_en', 'position', 'name']);
 var_dump($countries);
+
+//$test = strcasecmp("France", "Poland");
+//echo $test;
