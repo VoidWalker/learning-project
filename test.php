@@ -13,7 +13,6 @@ $countries = [
     ['lang' => 'en', 'name' => 'Abstralia', 'position' => 7],
     ['lang' => 'en', 'name' => 'Australia', 'position' => 7]
 ];
-//var_dump($countries);
 $criteria = ['position', 'name'];
 $countriesSorted = [];
 
@@ -64,37 +63,6 @@ function sortByCriteria(&$countries, $criteria)
         }
         return ($a[$criteria[0]] < $b[$criteria[0]]) ? -1 : 1;
     });
-}
-
-function sortByEn(&$countries)
-{
-    usort($countries, function ($a, $b) {
-        if ($a['lang'] == $b['lang']) {
-            return 0;
-        }
-        return (($a['lang'] == 'en') && ($b['lang'] !== 'en')) ? -1 : 1;
-    });
-}
-
-function sortArray($countryArray)
-{
-    $array = $countryArray;
-    $sortingFlag = true;
-    $length = count($array);
-    while ($sortingFlag) {
-        $sortingFlag = false;
-        for ($i = 0; $i < $length - 1; $i++) {
-            if ($array[$i]['position'] > $array[$i + 1]['position']) {
-                list($array[$i], $array[$i - 1]) = array($array[$i - 1], $array[$i]);
-                $sortingFlag = true;
-            } elseif (($array[$i]['position'] === $array[$i + 1]['position']) && ($array[$i]['name'] > $array[$i + 1]['name'])) {
-                list($array[$i], $array[$i - 1]) = array($array[$i - 1], $array[$i]);
-                $sortingFlag = true;
-            }
-        }
-    }
-
-    return $array;
 }
 
 $countriesSorted[] = extractUSA($countries);
