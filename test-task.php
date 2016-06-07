@@ -21,7 +21,6 @@ function setCriteriaFlags(&$array)
     foreach ($array as &$country) {
         ($country['name'] === 'USA') ? $country['is_usa'] = 0 : $country['is_usa'] = 1;
         ($country['lang'] === 'en') ? $country['is_en'] = 0 : $country['is_en'] = 1;
-
     }
 }
 
