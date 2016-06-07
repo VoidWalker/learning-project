@@ -16,7 +16,7 @@ $countries = [
 ];
 $countriesSorted = [];
 
-function setCriteriaFlags(&$array)
+function setPriorityFlags(&$array)
 {
     foreach ($array as &$country) {
         ($country['name'] === 'USA') ? $country['is_usa'] = 0 : $country['is_usa'] = 1;
@@ -38,6 +38,6 @@ function sortByCriteria(&$countries, $criteria)
     });
 }
 
-setCriteriaFlags($countries);
+setPriorityFlags($countries);
 sortByCriteria($countries, ['is_usa', 'is_en', 'position', 'name']);
 var_dump($countries);
