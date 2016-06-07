@@ -31,8 +31,7 @@ function sortByCriteria(&$countries, $criteria)
             if ($a[$criteria[$i]] == $b[$criteria[$i]]) {
                 continue;
             }
-            ($a[$criteria[$i]] > $b[$criteria[$i]]) ? $test = 1 : $test = -1;
-            return $test;
+            return ($a[$criteria[$i]] > $b[$criteria[$i]]) ? 1 : -1;
         }
         return 0;
     });
